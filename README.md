@@ -20,7 +20,7 @@ for(PKG in pkgs) {
 then install `mtsp` package
 
 ```
-remotes::install_github("daffp/mtsp)
+remotes::install_github("daffp/mtsp")
 ```
 
 Run some examples to see that it is working
