@@ -1,0 +1,18 @@
+Package: mtsp
+Type: Package
+Title: Using Genetic Algorithm To Find Solutions To The 2D Multiple
+        Travelling Salesperson Problem
+Version: 0.001
+Date: 2020-05-11
+Author: david
+Maintainer: david <daffp.gh@gmail.com>
+Description: Using genetic algorithm to find solutions to multiple travelling salesperson problem. 
+ Port of matlab code \url{https://uk.mathworks.com/matlabcentral/fileexchange/31814-mdmtspv_ga-multiple-depot-multiple-traveling-salesmen-problem-solved-by-genetic-algorithm} and 
+ \url{https://uk.mathworks.com/matlabcentral/fileexchange/19049-multiple-traveling-salesmen-problem-genetic-algorithm}.
+License: GPL (>= 2)
+Imports: Rcpp (>= 1.0.4)
+LinkingTo: Rcpp, RcppArmadillo
+RoxygenNote: 7.1.0
+Encoding: UTF-8
+NeedsCompilation: yes
+Packaged: 2020-05-04 18:10:30 UTC; david
