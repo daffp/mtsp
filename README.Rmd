@@ -1,0 +1,48 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  out.width = "100%"
+)
+```
+
+
+# mtsp
+Genetic algorithm to solve multiple travelling salespersons. Port of matlab code found at https://uk.mathworks.com/matlabcentral/fileexchange/31814-mdmtspv_ga-multiple-depot-multiple-traveling-salesmen-problem-solved-by-genetic-algorithm and https://uk.mathworks.com/matlabcentral/fileexchange/19049-multiple-traveling-salesmen-problem-genetic-algorithm.
+
+
+Install package dependencies:
+
+```{r, eval=FALSE}
+pkgs = c("Rcpp", "RcppArmadillo", "inline", "remotes" )
+install.packages(pkgs)
+```
+
+Then install `mtsp` package from github:
+
+```{r, eval=FALSE}
+remotes::install_github("daffp/mtsp")
+```
+
+Run some examples to see that it is working
+
+```{r}
+library(mtsp)
+set.seed(1)
+
+# Matrix of n9ode positions to visit
+n = 50
+xy = matrix(rnorm(n*2), ncol=2)
+
+# Run search
+run = mtsp(xy, nSalesmen=5, CostType=2, popSize=80, numIter=10, algorithm="mtsp_ga", return_all=TRUE)
+run
+
+summary(run)
+```
