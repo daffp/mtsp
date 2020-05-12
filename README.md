@@ -28,7 +28,7 @@ Run some examples to see that it is working
 library(mtsp)
 set.seed(1)
 
-# Matrix of n9ode positions to visit
+# Matrix of node positions to visit
 n = 50
 xy = matrix(rnorm(n*2), ncol=2)
 
