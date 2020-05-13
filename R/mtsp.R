@@ -6,7 +6,7 @@
 #' @param depots A \code{nSales} by \code{2} matrix of coordinate positions for the starting positions / depots. This should have the same number of rows as there are salespersons.
 #' @param nSalesmen An integer giving the number of salespersons (must be >= 2).
 #' @param minTour An integer giving the minimum tour length for any of the salesmen.
-#' @param CostType Possible values are the integers 1, 2 or 3; 1 minimises the total distance travelled, 2 minimises the maximum distance travelled across the salepersons, and 3 also returns total distance. 
+#' @param CostType CostType Possible values are the integers 1 or 2; 1 minimises the total distance travelled and 2 minimises the maximum distance travelled across the salepersons. 
 #' @param algorithm Which algorithm to call. Possible choices are \code{"mdmtspv_ga"}, \code{"mdmtspv_ga2"}, or \code{"mtsp_ga"}. See details.
 #' @param popSize The population size / search space of the GA. Defaults to 80 (should be divisible by 8 but this is corrected within program).
 #' @param numIter is the number of desired iterations for the algorithm to run after a new best solution is found. 
