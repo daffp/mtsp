@@ -26,7 +26,7 @@ mtsp(
 
 \item{minTour}{An integer giving the minimum tour length for any of the salesmen.}
 
-\item{CostType}{Possible values are the integers 1, 2 or 3; 1 minimises the total distance travelled, 2 minimises the maximum distance travelled across the salepersons, and 3 also returns total distance.}
+\item{CostType}{CostType Possible values are the integers 1 or 2; 1 minimises the total distance travelled and 2 minimises the maximum distance travelled across the salepersons.}
 
 \item{algorithm}{Which algorithm to call. Possible choices are \code{"mdmtspv_ga"}, \code{"mdmtspv_ga2"}, or \code{"mtsp_ga"}. See details.}
 
