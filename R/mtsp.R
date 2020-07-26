@@ -1,5 +1,3 @@
-
-
 #' Runs the MTSP solver
 #'
 #' @param xy A \code{n} by \code{2} matrix of coordinate positions. Each row has the \code{x} and \code{y} position of the n sites to be visited.
@@ -176,24 +174,3 @@ print.summary.mtsp = function(x, ...){
         }
      }
     }
-
-
-
-
-
-
-# Rcpp::compileAttributes(verbose=T)
-# devtools::load_all()
-# devtools::document()
-# 
-# devtools::check()
-
-
-
-
-
-
-
-
-
-

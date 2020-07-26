@@ -1,8 +1,5 @@
-
-
 #include <RcppArmadillo.h>
 #include "utility.h"
-// [[Rcpp::depends(RcppArmadillo)]]
 
 using namespace Rcpp;
 using namespace arma;
@@ -240,8 +237,4 @@ List mtsp_ga(arma::mat xy, arma::mat dmat, int nSalesmen, int minTour, int CostT
   return L;
   
 } 
-
-
-
-
 

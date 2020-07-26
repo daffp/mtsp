@@ -1,10 +1,7 @@
-
 #include <RcppArmadillo.h>
-// [[Rcpp::depends(RcppArmadillo)]]
 
-
-#ifndef NEXUS_UTILITY_H
-#define NEXUS_UTILITY_H
+#ifndef MTSP_UTILITY_H
+#define MTSP_UTILITY_H
 
 arma::irowvec rand_breaks(int minTour, int n, int nBreaks, arma::vec cumProb);
 
@@ -21,9 +18,5 @@ arma::imat flip(arma::imat myMat, int r, arma::uvec ij);
 arma::imat swap(arma::imat myMat, int r, arma::uvec ij) ;
 
 arma::imat slide(arma::imat myMat, int r, arma::uvec ij) ;
-
-
-
-
 
 #endif

@@ -1,5 +1,4 @@
 #include <RcppArmadillo.h>
-// [[Rcpp::depends(RcppArmadillo)]]
 
 using namespace Rcpp;
 using namespace arma;
@@ -37,17 +36,11 @@ arma::irowvec rand_breaks(int minTour, int n, int nBreaks, arma::vec cumProb) {
 }
 
 
-
-
-
-
 arma::irowvec randbreak( int n, int max_salesmen) {
   int num_breaks = max_salesmen - 1;
   arma::irowvec breaks = arma::sort(as<arma::irowvec>(Rcpp::sample(n-1, num_breaks)));
   return breaks;
 }
-
-
 
 
 arma::imat CalcRange(arma::irowvec p_brk, int n){
@@ -100,9 +93,6 @@ arma::imat CalcRange(arma::irowvec p_brk, int n){
 }
 
 
-
-
-
 double CalcTourLength(arma::irowvec Tour, arma::mat d, arma::mat d0){
   
   int indices = Tour.n_elem - 1;
@@ -115,7 +105,6 @@ double CalcTourLength(arma::irowvec Tour, arma::mat d, arma::mat d0){
   
   return VehicleTourLength;
 }
-
 
 
 // no depot
@@ -145,6 +134,7 @@ arma::imat swap(arma::imat myMat, int r, arma::uvec ij) {
   myMat.submat(row_idx, ij) = arma::reverse( myMat.submat(row_idx, ij), 1);
   return myMat;
 }
+
 
 arma::imat slide(arma::imat myMat, int r, arma::uvec ij) {
   

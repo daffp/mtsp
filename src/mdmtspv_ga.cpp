@@ -1,8 +1,6 @@
-
-
 #include <RcppArmadillo.h>
 #include "utility.h"
-// [[Rcpp::depends(RcppArmadillo)]]
+
 using namespace Rcpp;
 using namespace arma;
 
@@ -150,7 +148,7 @@ List mdmtspv_ga(arma::mat xy, arma::mat dmat, arma::mat depots,  int nSalesmen, 
     // Genetic Algorithm Operators
     //arma::uvec randomOrder = arma::randperm(popSize);
     Rcpp::IntegerVector s = Rcpp::sample(popSize, popSize)-1; 
-    arma::uvec randomOrder = arma::sort(as<arma::uvec>(s));
+    arma::uvec randomOrder = as<arma::uvec>(s);
     
     int ops = 8;
     arma::ivec pseq = regspace<arma::ivec>(ops, ops, popSize);
@@ -256,15 +254,5 @@ List mdmtspv_ga(arma::mat xy, arma::mat dmat, arma::mat depots,  int nSalesmen, 
   return L;
   
 }
-
-
-
-
-
-
-
-
-
-
 
 
