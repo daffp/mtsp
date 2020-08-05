@@ -174,3 +174,88 @@ print.summary.mtsp = function(x, ...){
         }
      }
     }
+
+
+
+#' Arranges the \code{mtsp} solution for plotting.
+#'
+#' @param x The list returned by \code{mtsp}.
+#' @param dat A matrix of x,y positions passed to \code{mtsp}. Only needed when \code{return_all=FALSE} was used.
+#' @param ... Other arguments.
+#' @export 
+fortify <- function(x, dat, ...) UseMethod("fortify")
+
+#' @export 
+fortify.mtsp_ga <- function(x, dat=NULL, ...){
+
+                if(is.null(x$xy) & is.null(dat)) stop("The position matrix must be provided. Re-run mtsp with the option return_all=TRUE
+                                                        or else provide the data.")
+
+                plot_dat = do.call(rbind,
+                                  lapply(seq_along(x$best_tour), function(tour) {
+                                                                        route = x$best_tour[[tour]]
+                                                                        from = x$xy[route,]
+                                                                        colnames(from) = paste0("from_", c("x", "y"))
+                                                                        to = x$xy[c(route[-1], route[1]),]
+                                                                        colnames(to) = paste0("to_", c("x", "y"))
+                                                                        pdat = data.frame(from, to, id=tour)
+                                                                        pdat
+                                                                        }
+                                         ))
+                return(plot_dat)
+                }
+
+
+
+#' Plot the MTSP solution
+#' 
+#' Plot the MTSP solution (currently only implemented for the non-depot algorithms).
+#'
+#' @param x The list returned by \code{mtsp}.
+#' @param dat A matrix of x,y positions passed to \code{mtsp}. Only needed when \code{return_all=FALSE} was used.
+#' @param ... Unused.
+#' @examples
+#' set.seed(1)
+#' n = 25
+#' xy = matrix(rnorm(n*2), ncol=2)
+#' run = mtsp(xy, nSalesmen=5, CostType=2, popSize=80, 
+#'            numIter=10, algorithm="mtsp_ga", return_all=TRUE)
+#' plot(run) 
+#' @importFrom graphics box segments
+#' @export
+plot.mtsp_ga  <- function(x, dat=NULL, ...){
+
+  plot_dat = fortify(x, dat)
+
+  plot(plot_dat[c("from_x","from_y")], axes=FALSE, xlab="", ylab="", pch=16, col=plot_dat$id+1)
+  box()
+  segments(plot_dat[["from_x"]], plot_dat[["from_y"]], plot_dat[["to_x"]], plot_dat[["to_y"]], col=plot_dat$id+1)
+
+  } 
+
+
+#' Plot
+#'
+#' @rdname plot.mtsp_ga 
+#' @export 
+ggplot <- function(x, dat, ...) UseMethod("ggplot")
+
+#' @export 
+ggplot.mtsp_ga  <- function(x, dat=NULL, ...){
+  
+    if (!requireNamespace("ggplot2", quietly = TRUE)) 
+      stop("Package \"ggplot2\" needed for this function to work.")
+
+  plot_dat = fortify(x, dat)
+
+  ggplot2::ggplot(plot_dat, ggplot2::aes(x=from_x, y=from_y, xend=to_x, yend=to_y, col=factor(id))) +
+    ggplot2::geom_point() + 
+    ggplot2::geom_segment() +
+    ggplot2::scale_colour_discrete(name = "Salesman") +
+    ggplot2::theme_void() +
+    ggplot2::theme(legend.position = "top", panel.border = ggplot2::element_rect(fill=NA))
+}
+
+
+
+

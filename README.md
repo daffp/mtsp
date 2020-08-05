@@ -33,26 +33,37 @@ n = 50
 xy = matrix(rnorm(n*2), ncol=2)
 
 # Run search
-run = mtsp(xy, nSalesmen=5, CostType=2, popSize=80, numIter=10, algorithm="mtsp_ga", return_all=TRUE)
+run = mtsp(xy, nSalesmen=5, CostType=2, popSize=80, numIter=2000, algorithm="mtsp_ga", return_all=TRUE)
 run
-#> Total distance travelled for all salespersons = 67.06
-#> Maximum distance travelled by a single salesperson = 14.15
+#> Total distance travelled for all salespersons = 33.49
+#> Maximum distance travelled by a single salesperson = 7.42
 
 summary(run)
-#> Total distance travelled: 67.06
+#> Total distance travelled: 33.49
 #> ================================
-#> Salesperson 1 : distance travelled = 11.91
-#> Tour: 45 -> 20 -> 14 -> 35 -> 25 -> 8 -> 26 -> 45
+#> Salesperson 1 : distance travelled = 5.85
+#> Tour: 13 -> 37 -> 20 -> 36 -> 1 -> 35 -> 46 -> 13
 #> 
-#> Salesperson 2 : distance travelled = 14.15
-#> Tour: 24 -> 30 -> 34 -> 41 -> 36 -> 46 -> 32 -> 23 -> 5 -> 1 -> 17 -> 24
+#> Salesperson 2 : distance travelled = 7.27
+#> Tour: 50 -> 31 -> 39 -> 33 -> 5 -> 6 -> 45 -> 42 -> 44 -> 9 -> 19 -> 50
 #> 
-#> Salesperson 3 : distance travelled = 13.92
-#> Tour: 28 -> 10 -> 3 -> 31 -> 40 -> 12 -> 29 -> 50 -> 4 -> 44 -> 27 -> 28
+#> Salesperson 3 : distance travelled = 7.23
+#> Tour: 43 -> 18 -> 11 -> 21 -> 40 -> 16 -> 32 -> 27 -> 10 -> 26 -> 23 -> 43
 #> 
-#> Salesperson 4 : distance travelled = 13.41
-#> Tour: 19 -> 15 -> 13 -> 37 -> 42 -> 7 -> 39 -> 6 -> 9 -> 18 -> 43 -> 19
+#> Salesperson 4 : distance travelled = 7.42
+#> Tour: 3 -> 29 -> 38 -> 2 -> 30 -> 25 -> 47 -> 49 -> 24 -> 14 -> 28 -> 3
 #> 
-#> Salesperson 5 : distance travelled = 13.67
-#> Tour: 16 -> 49 -> 48 -> 2 -> 38 -> 11 -> 21 -> 33 -> 22 -> 47 -> 16
+#> Salesperson 5 : distance travelled = 5.73
+#> Tour: 4 -> 15 -> 22 -> 48 -> 7 -> 12 -> 41 -> 34 -> 17 -> 8 -> 4
 ```
+
+Plot the solution
+
+``` r
+par(pty="s")
+plot(run, ylim=c(-3,3), xlim=c(-3,3))
+```
+
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+
+There is also a `ggplot2` method which can be run with `ggplot(run)`.
