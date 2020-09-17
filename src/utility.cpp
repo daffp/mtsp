@@ -53,7 +53,7 @@ arma::imat CalcRange(arma::irowvec p_brk, int n){
   
   for(int i = 0; i < l; ++i){
     
-    if( (flag == 1) & (p_brk(i) > 0)){
+    if( (flag == 1) and (p_brk(i) > 0)){
       arma::irowvec v(2); v(0) = 0; v(1) = p_brk(i);
       rng.row(i) = v;
       flag = 0;
@@ -76,11 +76,11 @@ arma::imat CalcRange(arma::irowvec p_brk, int n){
     }
   }
   
-  if( (p_brk(lm) < n) & (p_brk(lm) !=1)){
+  if( (p_brk(lm) < n) and (p_brk(lm) !=1)){
     arma::irowvec v(2); v(0) = p_brk(lm)+1; v(1) = n;
     rng.row(l) = v;
   }  
-  else if( (p_brk(lm) < n) & (p_brk(lm) == 1)){
+  else if( (p_brk(lm) < n) and (p_brk(lm) == 1)){
     arma::irowvec v(2); v(0) = p_brk(lm); v(1) = n;
     rng.row(l) = v;
   }

@@ -2,12 +2,12 @@
 % Please edit documentation in R/mtsp.R
 \name{plot.mtsp_ga}
 \alias{plot.mtsp_ga}
-\alias{ggplot}
+\alias{ggplotter}
 \title{Plot the MTSP solution}
 \usage{
 \method{plot}{mtsp_ga}(x, dat = NULL, ...)
 
-ggplot(x, dat, ...)
+ggplotter(x, dat, ...)
 }
 \arguments{
 \item{x}{The list returned by \code{mtsp}.}

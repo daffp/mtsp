@@ -4,12 +4,23 @@
 \alias{get_distances}
 \title{Grabs the distances for a single salesperson}
 \usage{
-get_distances(x, ...)
+get_distances(x, idx, paths, dmat, depot_mat, ...)
 }
 \arguments{
 \item{x}{The list returned by \code{mtsp}.}
 
-\item{...}{Other arguments.}
+\item{idx}{An index representing a single list element of \code{best_tour}.}
+
+\item{paths}{The list with the \code{best_tour} returned by \code{mtsp}.}
+
+\item{dmat}{The distance matrix for the positions.}
+
+\item{depot_mat}{The matrix \code{D0} giving the distances between the depots and positions, returned by \code{mtsp}.}
+
+\item{...}{Not used.}
+}
+\value{
+Returns the distance for a single salesperson.
 }
 \description{
 Grabs the distances for a single salesperson

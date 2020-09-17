@@ -71,21 +71,18 @@ print.mtsp = function(x, ...){
 #' Grabs the distances for a single salesperson
 #'
 #' @param x The list returned by \code{mtsp}.
-#' @param ... Other arguments.
-#' @export get_distances
-get_distances <- function(x, ...) UseMethod("get_distances")
-
-
-#' Grabs the distances for a single salesperson
-#'
-#' @param x The list returned by \code{mtsp}.
 #' @param idx An index representing a single list element of \code{best_tour}.
 #' @param paths The list with the \code{best_tour} returned by \code{mtsp}.
 #' @param depot_mat The matrix \code{D0} giving the distances between the depots and positions, returned by \code{mtsp}.
 #' @param dmat The distance matrix for the positions.
 #' @param ... Not used.
 #' @return Returns the distance for a single salesperson.
-get_distances.mdmtspv_ga = function( x, idx, paths, depot_mat, dmat, ...){
+#' @export get_distances
+get_distances <- function(x, idx, paths, dmat, depot_mat, ...) UseMethod("get_distances")
+
+
+#' @export
+get_distances.mdmtspv_ga = function( x, idx, paths, dmat, depot_mat, ...){
   # site distances
   dmat_idx = cbind(paths[-length(paths)], paths[-1])
   dmat_distances = dmat[dmat_idx]
@@ -99,15 +96,8 @@ get_distances.mdmtspv_ga = function( x, idx, paths, depot_mat, dmat, ...){
 }
 
 
-#' Grabs the distances for a single salesperson
-#'
-#' @param x The list returned by \code{mtsp}.
-#' @param idx An index representing a single list element of \code{best_tour}.
-#' @param paths The list with the \code{best_tour} returned by \code{mtsp}.
-#' @param dmat The distance matrix for the positions.
-#' @param ... Not used.
-#' @return Returns the distance for a single salesperson.
-get_distances.mtsp_ga = function( x, idx, paths, dmat, ...){
+#' @export
+get_distances.mtsp_ga = function( x, idx, paths, dmat, depot_mat=NULL, ...){
   # site distances
   dmat_idx = rbind(cbind(paths[-length(paths)], paths[-1]),c(paths[length(paths)], paths[1]))
   dmat_distances = dmat[dmat_idx]
@@ -120,7 +110,7 @@ get_distances.mtsp_ga = function( x, idx, paths, dmat, ...){
 
 
 #' Calculates the distance for each saleperson
-#'
+#' 
 #' @param object The list returned by \code{mtsp}.
 #' @param xy A \code{n} by \code{2} matrix of coordinate positions. Each row has the \code{x} and \code{y} position of the n sites to be visited.
 #' @param ... Not used.
@@ -238,10 +228,11 @@ plot.mtsp_ga  <- function(x, dat=NULL, ...){
 #'
 #' @rdname plot.mtsp_ga 
 #' @export 
-ggplot <- function(x, dat, ...) UseMethod("ggplot")
+ggplotter <- function(x, dat, ...) UseMethod("ggplotter")
+
 
 #' @export 
-ggplot.mtsp_ga  <- function(x, dat=NULL, ...){
+ggplotter.mtsp_ga  <- function(x, dat=NULL, ...){
   
     if (!requireNamespace("ggplot2", quietly = TRUE)) 
       stop("Package \"ggplot2\" needed for this function to work.")

@@ -12,7 +12,7 @@ and
 Install package dependencies:
 
 ``` r
-pkgs = c("Rcpp", "RcppArmadillo", "inline", "remotes" )
+pkgs = c("Rcpp", "RcppArmadillo", "remotes" )
 install.packages(pkgs)
 ```
 
@@ -66,4 +66,4 @@ plot(run, ylim=c(-3,3), xlim=c(-3,3))
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
-There is also a `ggplot2` method which can be run with `ggplot(run)`.
+There is also a `ggplot2` method which can be run with `ggplotter(run)`.
